@@ -29,11 +29,23 @@ pipeline {
                 bat 'dotnet build SeleniumBasicExercise.sln --configuration Release'
                 }
         }
-        stage("Run tests") {
+        stage("Run tests TestProject1") {
             steps{
-                bat 'dotnet test SeleniumBasicExercise.sln --logger "trx;LogFileName=TestResults.trx"'
+                bat 'dotnet test TestProject1/TestProject1.csproj --logger "trx;LogFileName=TestResults.trx"'
                 }
-        }                                                
+        } 
+
+        stage("Run tests TestProject2") {
+            steps{
+                bat 'dotnet test TestProject2/TestProject2.csproj --logger "trx;LogFileName=TestResults.trx"'
+                }
+        }     
+
+        stage("Run tests TestProject3") {
+            steps{
+                bat 'dotnet test TestProject3/TestProject3.csproj --logger "trx;LogFileName=TestResults.trx"'
+                }
+        }                                                    
         }
         
     post {
